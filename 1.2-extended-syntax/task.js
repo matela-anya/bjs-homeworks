@@ -17,17 +17,21 @@ function getAverageMark(marks) {
     // код для задачи №2 писать здесь
     let averageMark = 0;
 
-    if (marks.length === 0) {
-        averageMark = 0;
-    } else if (marks.length > 4) {
+    if (marks.length > 4) {
             marks.splice(5, marks.length);
     };
 
     for (let i = 0; i < marks.length; i++) {
-            averageMark += marks[i];
+            averageMark += marks[i];     
     };
 
-    return averageMark / marks.length;
+    averageMark = averageMark / marks.length;
+
+    if (marks.length === 0) {
+        averageMark = 0;
+    };
+
+    return averageMark;
 };
 
 function askDrink(name, dateOfBirthday) {

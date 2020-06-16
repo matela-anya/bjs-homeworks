@@ -1,4 +1,4 @@
-// Не понимаю, куда тут пихать this и как связать console.log в задаче с фунцкцией? Как обычно через return? Какой тут должен быть синтаксис? Искала, ничего подобного не нашла. В лекции ответов нет.
+// Не понимаю, куда тут пихать this и как связать console.log в задаче с фунцкцией? Как обычно через return? Какой тут должен быть синтаксис? Искала, ничего подобного не нашла. В лекции ответов нет (либо я очень невнимательна). Подскажите, куда двигаться, пожалуйста.
 function String.prototype.isPalindrome(str) {
     str = str.toLowerCase().replace(/\s/g, '');
   
@@ -10,21 +10,6 @@ function String.prototype.isPalindrome(str) {
   };
   
   console.log("А роза упала на лапу Азора");
-
-
-function getAnimalSound(animal) {
-    // код для задачи №1 писать здесь. Почему в домашке два задания №1?
-  let animalSound;
-  let sound = animal.sound;
-
-  if (animal === undefined) {
-    animalSound = null;
-  } else {
-    animalSound = sound;
-  };
-
-  return animalSound;
-};
 
 function getAverageMark(marks) {
     // код для задачи №2 писать здесь

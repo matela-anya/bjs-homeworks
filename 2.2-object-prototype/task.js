@@ -1,15 +1,18 @@
-// Не понимаю, куда тут пихать this и как связать console.log в задаче с фунцкцией? Как обычно через return? Какой тут должен быть синтаксис? Искала, ничего подобного не нашла. В лекции ответов нет (либо я очень невнимательна). Подскажите, куда двигаться, пожалуйста.
-function String.prototype.isPalindrome(str) {
-    str = str.toLowerCase().replace(/\s/g, '');
-  
-    if(str === str.split('').reverse().join('')) {
-      true;
-    } else {
-      false;
-    };
+String.prototype.isPalindrome = function(str) {
+  let result;
+  str = str.toLowerCase().replace(/\s/g,'');
+
+  if(str === str.split('').reverse().join('')) {
+    result = true;
+  } else {
+    result = false
   };
-  
-  console.log("А роза упала на лапу Азора");
+
+  return result;
+};
+
+const a = new String("А роза упала на лапу Азора");
+a.isPalindrome(a);
 
 function getAverageMark(marks) {
     // код для задачи №2 писать здесь

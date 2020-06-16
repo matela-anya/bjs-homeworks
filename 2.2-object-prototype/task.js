@@ -14,6 +14,20 @@ String.prototype.isPalindrome = function(str) {
 const a = new String("А роза упала на лапу Азора");
 a.isPalindrome(a);
 
+function getAnimalSound(animal) {
+  // код для задачи №1 писать здесь. Почему в домашке два задания №1?
+let animalSound;
+let sound = animal.sound;
+
+if (animal === undefined) {
+  animalSound = null;
+} else {
+  animalSound = sound;
+};
+
+return animalSound;
+};
+
 function getAverageMark(marks) {
     // код для задачи №2 писать здесь
   let average = 0;

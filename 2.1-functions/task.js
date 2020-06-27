@@ -7,11 +7,11 @@ function getSolutions(a, b, c) {
     if (D < 0) {
         object = { D: D, roots: [] };
     } else if (D === 0) {
-        let x1 = -b / 2 * a;
+        let x1 = -b / (2 * a);
         object = { D: D, roots: [ x1 ] };
     } else {
-        let x1 = (-b + Math.sqrt(D)) / 2 * a;
-        let x2 = (-b - Math.sqrt(D)) / 2 * a;
+        let x1 = (-b + Math.sqrt(D)) / (2 * a);
+        let x2 = (-b - Math.sqrt(D)) / (2 * a);
         object = { D: D, roots: [ x1, x2 ] }
     };
 
@@ -37,60 +37,43 @@ function showSolutionsMessage(a, b, c) {
 
 // Задача 2
 
-function getAverageScore(data) {
-    let averageAll = 0;
-    let counter = 0;
-  
-    for (let i in data) {
-      counter++;
-      let result = data[i].reduce(function(sum, current) {
+function getAverageMark(marks) {
+  let sum = marks.reduce(function(sum, current) {
         return (sum + current);
       });
-  
-      function getAverageMark(marks) {
-        averageAll = (averageAll + result) / counter;
-        data.averageAll = averageAll; 
-        //Не могу понять, как добавить это свойство в обект.
-      };
-  
-      let average = result / data[i].length;
-      data[i] = average;
-  
-      if (data[i] === 0) {
-      averageAll = 0;
-      };
-    };
-  
-    return data;
+  let average = sum / Object.keys(marks).length;
+  return average;
+};
+
+function getAverageScore(data) {
+  for (let i in data) {
+    data[i] = getAverageMark(Object.values(data[i]));
   };
+  data.averageAll = getAverageMark(Object.values(data));
+  return data;
+};  
 
 // Задача 3
-// Не понимаю, зачем нужна вторая функция и как вернуть и свойство, и значение свойства. С первого взгляда кажется все так просто, но в итоге я запуталась.
-
+//Теперь не понимаю, почему i не присваивается значение. Можно ли вообще изменить имя ключа? Не нашла такой информациии.
+//данные о пирате
 function getPersonData(secretData) {
-  
-    function getDecodedValue(secret) {
-      let name;
-      for (secret in secretData) {
-  
-      if (secretData[secret] === 1) {
-          name = "Эмильо";
-        } else if (secretData[secret] === 0) {
-          name = "Родриго";
-        };
-  
-        if (secret === aaa) {
-          secret = "firstName";
-          } else {
-            secret = "lastName";
-        };
-        
+  for (i in secretData) {
+    if (i === 'aaa') {
+      i = 'firstName';
+    } else {
+      i = 'lastName';
       };
-  
-      secret = name;
-  
-      return secret;
-    };
-  
-  return secretData[secret];
+    getDecodedValue(secretData[i]);
   };
+  return secretData;
+};
+
+//по входному числу будет возвращает строку "Родриго" или "Эмильо"
+function getDecodedValue(secret) {
+  if (secret === 1) {
+    secret = "Эмильо";
+    } else {
+      secret = "Родриго";
+      };
+  return secret;
+};

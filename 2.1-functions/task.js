@@ -54,8 +54,6 @@ function getAverageScore(data) {
 };  
 
 // Задача 3
-//Теперь не понимаю, почему i не присваивается значение. Можно ли вообще изменить имя ключа? Не нашла такой информациии.
-//данные о пирате
 function getPersonData(secretData) {
   for (i in secretData) {
     if (i === 'aaa') {
@@ -65,10 +63,12 @@ function getPersonData(secretData) {
       };
     getDecodedValue(secretData[i]);
   };
-  return secretData;
+  return console.log({
+    firstName: getDecodedValue(secretData.aaa),
+    lastName: getDecodedValue(secretData.bbb)
+  });
 };
 
-//по входному числу будет возвращает строку "Родриго" или "Эмильо"
 function getDecodedValue(secret) {
   if (secret === 1) {
     secret = "Эмильо";

@@ -1,4 +1,6 @@
-String.prototype.isPalindrome = function(str) {
+// Задача 1
+String.prototype.isPalindrome = function() {
+  let str = this;
   let result;
   str = str.toLowerCase().replace(/\s/g,'');
 
@@ -11,26 +13,26 @@ String.prototype.isPalindrome = function(str) {
   return result;
 };
 
-const a = new String("А роза упала на лапу Азора");
-a.isPalindrome(a);
+"А роза упала на лапу Азора".isPalindrome();
 
+// Задача 1
 function getAnimalSound(animal) {
-  // код для задачи №1 писать здесь. Почему в домашке два задания №1?
 let animalSound;
 let sound = animal.sound;
 
 if (animal === undefined) {
   animalSound = null;
 } else {
-  animalSound = sound;
+  let sound = animal.sound;
+	animalSound = sound;
 };
 
 return animalSound;
 };
 
+// Задача 2
 function getAverageMark(marks) {
-    // код для задачи №2 писать здесь
-  let average = 0;
+  let summ = 0;
   let roundedAverage;
 
   if (marks.length === 0) {
@@ -38,15 +40,27 @@ function getAverageMark(marks) {
   };
 
   for (let i = 0; i < marks.length; i++) {
-    average += marks[i];     
+    summ += marks[i];     
   };
 
-  roundedAverage = Math.ceil(average / marks.length);
+  roundedAverage = Math.ceil(summ / marks.length);
 
   return roundedAverage;
 };
 
+// Задача 3
 function checkBirthday(birthday) {
-    // код для задачи №3 писать здесь
-    // return verdict
-}
+  let verdict;
+  let now = new Date().getTime();
+  let date = new Date(birthday);
+
+  birthday = date.getTime();
+  let diff = now - birthday;
+  let age = diff / now.getFullYear().getMilliseconds();
+
+  if (age > 18) {
+    verdict = true;
+  }
+
+  return verdict;
+};

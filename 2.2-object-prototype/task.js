@@ -49,18 +49,11 @@ function getAverageMark(marks) {
 };
 
 // Задача 3
+const MS_IN_YEAR = 365.25 * 24 * 60 * 60 * 1000;
 function checkBirthday(birthday) {
-  let verdict;
-  let now = new Date().getTime();
-  let date = new Date(birthday);
-
-  birthday = date.getTime();
-  let diff = now - birthday;
-  let age = diff / now.getFullYear().getMilliseconds();
-
-  if (age > 18) {
-    verdict = true;
-  }
-
-  return verdict;
+  const now = new Date().getTime();
+  const date = new Date(birthday).getTime();
+  const diff = now - date;
+  const age = diff / MS_IN_YEAR;
+  return age >= 18;
 };

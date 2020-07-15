@@ -129,37 +129,46 @@ class StormStaff extends Staff {
     };
 };
   
-// Задача 3
-  
 class StudentLog {
   constructor (name) {
     this.name = name;
-    // Пыталась вставлять пустой объект сюда, но так видимо неправильно. Судя по тем статьям, что я нашла. Выдает ошибку. 
+    this.items = {}; 
     };
-
   getName() {
      return this.name;
   };
-
   addGrade(grade, subject) {
-    let count = 0;
-    let allItem = {
-    grade: grade,
-    subject: subject
-    };
-    // Вставила в итоге сюда, но оно никак не записывается, а ниже в цикле переменная i вообще не воспринимается.
-    
+    let allGrades = [];
+    this.items[subject] = allGrades;
     let result;
 
-    for (i in allItem) {
-      if (!subject === i) {
-      result = count++;
-      } else if (grade < 1 && grade > 5 && grade === String) {
-        result = [console.log(`Вы пытались поставить оценку ${grade} по предмету ${subject}. Допускаются только числа от 1 до 5.`), count = 0];
-      }
-    }
-    return count;
+    for (let subject in this.items) {
+      if (grade < 1 || grade > 5 || isNaN(grade)) {
+        console.log(`Вы пытались поставить оценку ${grade} по предмету ${subject}. Допускаются только числа от 1 до 5.`);
+        result = allGrades.length;
+      } else {
+        allGrades.push(grade);
+        result = allGrades.length;
+        //Теперь он не понимает, что начался новый предмет, и нужно добавить оценку в отдельный объект... Я пыталась фильтровать так: if (!subject === this.items.subject). Но эту конструкцию он тоже не понимает.
+    };
+    return result;
   };
+
+  getAverageBySubject(subject) {
+    // Сложить все оценки внутри предмета
+    // Поделить эти оценки на их количество
+    let result;
+    for (let subject in this.items) {
+      result = this.items[subject] / Object.values(this.items).length;
+    }
+    return result;
+  };
+
+  getTotalAverage() {
+    // Нужно вытащить сложенные оценки внутри предмета из метода getAverageBySubject
+    // Сожить эти оценки вместе
+    // Поделить эти оценки на их количество. Или на сумму предметов?
+    let result;
+  };
+
 };
-  
-  

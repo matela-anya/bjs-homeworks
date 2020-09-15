@@ -41,64 +41,88 @@ class Weapon {
 
 };
 
-const arm = new Weapon('Рука', 1, Infinity, 1);
-const bow = new Weapon('Лук', 10, 200, 3);
-const sword = new Weapon('Меч', 25, 500, 1);
-const knife = new Weapon('Нож', 5, 300, 1);
-const staff = new Weapon('Посох', 8, 300, 2);
-const longBow = new Weapon('Длинный лук', 15, bow.durability, 4);
-const ax = new Weapon('Секира', 27, 800, sword.range);
-const stormStaff = new Weapon('Посох Бури', 10, staff.durability, 3);
+const arm = new Weapon({
+  name: 'Рука', 
+  attack: 1, 
+  durability: Infinity, 
+  range: 1,
+});
+
+const bow = new Weapon({
+  name: 'Лук', 
+  attack: 10, 
+  durability: 200, 
+  range: 3,
+});
+
+const sword = new Weapon({
+  name: 'Меч', 
+  attack: 25, 
+  durability: 500, 
+  range: 1,
+});
+
+const knife = new Weapon({
+  name: 'Нож', 
+  attack: 5, 
+  durability: 300, 
+  range: 1,
+});
+
+const staff = new Weapon({
+  name: 'Посох', 
+  attack: 8, 
+  durability: 300, 
+  range: 2,
+});
+
+const longBow = new Weapon({
+  name: 'Длинный лук', 
+  attack: 15, 
+  range: 4,
+});
+
+const ax = new Weapon({
+name: 'Секира', 
+attack: 27, 
+durability: 800,
+});
+
+const stormStaff = new Weapon({
+  name: 'Посох Бури', 
+  attack: 10, 
+  range: 3,
+});
 
 // Задача 2
 
 class Arm extends Weapon {
   constructor(name, attack, durability, range) {
-    super(name, attack, durability, range)
-    this.name = 'Рука';
-    this.attack = 1;
-    this.durability = Infinity;
-    this.range = 1;
+    super('Рука', 1, Infinity, 1)
     };
 };
 
 class Bow extends Weapon {
   constructor(name, attack, durability, range) {
-    super(name, attack, durability, range)
-    this.name = 'Лук';
-    this.attack = 10;
-    this.durability = 200;
-    this.range = 3;
+    super('Лук', 10, 200, 3)
     };
 };
 
 class Sword extends Weapon {
   constructor(name, attack, durability, range) {
-    super(name, attack, durability, range)
-    this.name = 'Меч';
-    this.attack = 25;
-    this.durability = 500;
-    this.range = 1;
+    super('Меч', 25, 500, ra1nge)
     };
 };
 
 class Knife extends Weapon {
   constructor(name, attack, durability, range) {
-    super(name, attack, durability, range)
-    this.name = 'Нож';
-    this.attack = 5;
-    this.durability = 300;
-    this.range = 1;
+    super('Нож', 5, 300, 1)
     };
 };
 
 class Staff extends Weapon {
   constructor(name, attack, durability, range) {
-    super(name, attack, durability, range)
-    this.name = 'Посох';
-    this.attack = 8;
-    this.durability = 300;
-    this.range = 2;
+    super('Посох', 8, 300, 2)
     };
 };
 
@@ -127,48 +151,4 @@ class StormStaff extends Staff {
     this.attack = 10;
     this.range = 3;
     };
-};
-  
-class StudentLog {
-  constructor (name) {
-    this.name = name;
-    this.items = {}; 
-    };
-  getName() {
-     return this.name;
-  };
-  addGrade(grade, subject) {
-    let allGrades = [];
-    this.items[subject] = allGrades;
-    let result;
-
-    for (let subject in this.items) {
-      if (grade < 1 || grade > 5 || isNaN(grade)) {
-        console.log(`Вы пытались поставить оценку ${grade} по предмету ${subject}. Допускаются только числа от 1 до 5.`);
-        result = allGrades.length;
-      } else {
-        allGrades.push(grade);
-        result = allGrades.length;
-        //Теперь он не понимает, что начался новый предмет, и нужно добавить оценку в отдельный объект... Я пыталась фильтровать так: if (!subject === this.items.subject). Но эту конструкцию он тоже не понимает.
-    };
-    return result;
-  };
-
-  getAverageBySubject(subject) {
-    // Сложить все оценки внутри предмета
-    // Поделить эти оценки на их количество
-    let result;
-    for (let subject in this.items) {
-      result = this.items[subject] / Object.values(this.items).length;
-    }
-    return result;
-  };
-
-  getTotalAverage() {
-    // Нужно вытащить сложенные оценки внутри предмета из метода getAverageBySubject
-    // Сожить эти оценки вместе
-    // Поделить эти оценки на их количество. Или на сумму предметов?
-    let result;
-  };
-
 };
